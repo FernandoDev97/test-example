@@ -25,6 +25,9 @@ describe('App Component', () => {
         const button = screen.getByRole('button')
         fireEvent.click(button)
         screen.getByText(/new message!/i)
+
+        const oldMessage = screen.queryByText("Let's learn more about testing in React")
+        expect(oldMessage).not.toBeInTheDocument()
     })
 })
 
