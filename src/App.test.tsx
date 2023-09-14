@@ -22,9 +22,12 @@ describe('App Component', () => {
     it('should change message button click', () => {
         render(<App />)
         screen.getByText("Let's learn more about testing in React")
-        const button = screen.getByRole('button')
+        const button = screen.getByText('Change message')
         fireEvent.click(button)
         screen.getByText(/new message!/i)
+
+        const oldMessage = screen.queryByText("Let's learn more about testing in React")
+        expect(oldMessage).not.toBeInTheDocument()
     })
 })
 
